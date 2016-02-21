@@ -55,8 +55,7 @@ RUN echo y | android update sdk --no-ui --all --filter \
 
 # Extras
 RUN echo y | android update sdk --no-ui --all --filter \
-  extra-android-m2repository,extra-google-m2repository,extra-google-google_play_services
-
+  extra-android-m2repository,extra-android-support,extra-google-m2repository,extra-google-google_play_services,extra-intel-Hardware_Accelerated_Execution_Manager
 
 # ------------------------------------------------------
 # --- Install Gradle from PPA
@@ -75,6 +74,16 @@ RUN add-apt-repository ppa:andrei-pozolotin/maven3
 RUN apt-get update
 RUN apt-get -y install maven3
 RUN mvn --version
+
+# ------------------------------------------------------
+# --- Install NodeJS and NPM3
+RUN curl -sL https://deb.nodesource.com/setup_4.x | sudo -E bash -
+RUN apt-get install -y nodejs
+RUN npm install -g npm3
+
+# ------------------------------------------------------
+# --- React Native CLI
+RUN npm install -g react-native-cli
 
 # ------------------------------------------------------
 # --- Cleanup and rev num
