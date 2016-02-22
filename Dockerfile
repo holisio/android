@@ -79,11 +79,15 @@ RUN mvn --version
 # --- Install NodeJS and NPM3
 RUN curl -sL https://deb.nodesource.com/setup_4.x | sudo -E bash -
 RUN apt-get install -y nodejs
+RUN node --version
 RUN npm install -g npm3
+RUN npm --version
+
 
 # ------------------------------------------------------
 # --- React Native CLI
 RUN npm install -g react-native-cli
+RUN react-native --version
 
 # ------------------------------------------------------
 # --- Cleanup and rev num
